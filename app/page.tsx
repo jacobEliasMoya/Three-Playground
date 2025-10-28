@@ -1,13 +1,21 @@
-import Image from "next/image";
-import packageJson from "../package.json";
+"use client";
+import { Canvas } from "@react-three/fiber";
 
 export default function Home() {
-  const appName = process.env.Nex;
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-black">
-      <main className="flex min-h-screen w-full flex-col items-end justify-end p-16 bg-white dark:bg-black">
-        <h1 className="text-3xl font-bold capitalize w-max bg-red-700 p-2">{packageJson.name}</h1>
-      </main>
-    </div>
+    <main
+      id="canvas-container"
+      className="flex w-screen h-screen flex-col items-end justify-end p-8 from-neutral-700 to-neutral-950   bg-linear-to-br"
+    >
+      <Canvas>
+        <mesh position={[0, 0, 2]}>
+          <sphereGeometry args={[1, 20, 20]} />
+          <meshStandardMaterial color="skyblue" />
+        </mesh>
+
+        <ambientLight intensity={0.1} />
+        <directionalLight color="#fff" position={[0, 0, 5]} />
+      </Canvas>
+    </main>
   );
 }
