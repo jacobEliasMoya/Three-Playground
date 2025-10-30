@@ -1,20 +1,34 @@
 "use client";
-import { Canvas } from "@react-three/fiber";
-
+import * as THREE from "three";
+import { OrbitControls, Stars } from "@react-three/drei";
+import { Canvas, useLoader } from "@react-three/fiber";
 export default function Home() {
+  const earthMap = useLoader(THREE.TextureLoader, "/earthMap.png");
+  const moonMap = useLoader(THREE.TextureLoader,"moonMap.jpg")
   return (
-    <main
-      id="canvas-container"
-      className="flex w-screen h-screen flex-col items-end justify-end p-8 from-neutral-700 to-neutral-950   bg-linear-to-br"
-    >
+    <main id="canvas-container" className="flex w-screen h-screen">
       <Canvas>
-        <mesh position={[0, 0, 2]}>
-          <sphereGeometry args={[1, 20, 20]} />
-          <meshStandardMaterial color="skyblue" />
-        </mesh>
+        <group>
+          <mesh position={[0, 0, 0]}>
+            <sphereGeometry args={[1.4, 32]} />
+            <meshStandardMaterial map={earthMap} color="white" />
+          </mesh>
 
-        <ambientLight intensity={0.1} />
-        <directionalLight color="#fff" position={[0, 0, 5]} />
+          <mesh position={[5, 4, 1]}>
+            <sphereGeometry args={[.2, 32]} />
+            <meshStandardMaterial map={moonMap} color="white" />
+          </mesh>
+        </group>
+        <Stars fade />
+        <ambientLight intensity={1} />
+        <directionalLight position={[1, 1, 0]} color="white" intensity={1} />
+        <pointLight position={[1, 1, 0]} color="white" />
+        <OrbitControls
+          enableDamping={true}
+          dampingFactor={0.1}
+          autoRotate
+          autoRotateSpeed={0.5}
+        />
       </Canvas>
     </main>
   );
