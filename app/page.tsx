@@ -1,7 +1,6 @@
 "use client";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { EarthProps, MoonProps } from "./types/solarBodies";
 import { useState } from "react";
 import * as THREE from "three";
 
@@ -9,8 +8,8 @@ export default function Home() {
   const [active, setActive] = useState<boolean>(false);
   const [activeMoon, setActiveMoon] = useState<boolean>(false);
 
-  const earthMap = useLoader(THREE.TextureLoader, "/earthMap.png");
-  const moonMap = useLoader(THREE.TextureLoader, "moonMap.jpg");
+  const earthMap = useLoader(THREE.TextureLoader, "/textures/earthMap.png");
+  const moonMap = useLoader(THREE.TextureLoader, "/textures/moonMap.jpg");
 
   return (
     <main id="canvas-container" className="flex w-screen h-screen">
