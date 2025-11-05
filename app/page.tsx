@@ -1,15 +1,10 @@
 "use client";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
+import { EarthProps, MoonProps } from "./types/solarBodies";
 import { useState } from "react";
 import * as THREE from "three";
 
-interface EarthProps {
-  color: string;
-}
-interface MoonProps {
-  color: string;
-}
 export default function Home() {
   const [active, setActive] = useState<boolean>(false);
   const [activeMoon, setActiveMoon] = useState<boolean>(false);
