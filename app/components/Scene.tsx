@@ -1,8 +1,8 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
-import Earth from "./Earth";
-import Moon from "./Moon";
+import Earth from "./Planets/Earth";
+import Moon from "./Moons/Moon";
 
 const Scene = () => {
   return (
